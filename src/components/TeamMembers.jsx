@@ -14,20 +14,27 @@ const Modal = ({ isOpen, onClose, name, role, bio, image, contact, social }) => 
         <h2 className="text-2xl font-bold text-gray-800 text-center">{name}</h2>
         <p className="text-gray-500 text-center mb-4">{role}</p>
 
-        {/* Fixed height for the bio section with invisible scrollbar */}
         <div className="h-32 overflow-y-auto mb-4 scrollbar-hidden"> {/* Adjust height as needed */}
           <p className="text-gray-700 text-justify">{bio}</p>
         </div>
-        
+
         <p className="text-gray-500 text-center">{contact}</p>
         <div className="flex justify-center mt-4">
           {social.map((link, index) => (
-            <a key={index} href={link.url} className="text-blue-500 mx-2 flex items-center" target="_blank" rel="noopener noreferrer">
+            <a
+              key={index}
+              href={link.url}
+              className="text-blue-500 mx-2 flex items-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {link.platform === 'LinkedIn' && <i className="fab fa-linkedin mr-1"></i>}
+              {link.platform === 'GitHub' && <i className="fab fa-github mr-1"></i>} {/* GitHub ikonu */}
               {link.platform}
             </a>
           ))}
         </div>
+
       </div>
     </div>
   );
@@ -40,10 +47,10 @@ const CoachCard = ({ name, role, image, bio, contact, social }) => {
 
   return (
     <div>
-      <div onClick={() => setModalOpen(true)} className="p-6 rounded-lg shadow-lg flex flex-col items-center text-center mb-8 cursor-pointer transform transition-transform hover:scale-105 border-l-4 border-yellow-500">
+      <div onClick={() => setModalOpen(true)} className="p-6 rounded-lg shadow-lg flex flex-col items-center text-center mb-8 cursor-pointer transform transition-transform hover:scale-105 border-l-4 border-red-500">
         <img src={image} alt={name} className="w-32 h-32 rounded-full mb-4" />
         <h2 className="text-2xl font-bold text-blue-700">{name}</h2>
-        <p className="text-yellow-500">{role}</p>
+        <p className="text-red-500">{role}</p>
       </div>
       <Modal
         isOpen={isModalOpen}
@@ -72,7 +79,7 @@ const StudentCard = ({ name, role, image, bio, contact, social }) => {
         <img src={image} alt={name} className="w-24 h-24 rounded-full mb-4" />
         <h4 className="text-xl font-bold text-blue-700">{name}</h4>
 
-        <div className="text-yellow-500 max-w-xs truncate flex items-center justify-center">
+        <div className="text-red-500 max-w-xs truncate flex items-center justify-center">
           <p className="truncate">{role}</p>
         </div>
       </div>
@@ -96,15 +103,15 @@ const TeamGroup = ({ groupName, members }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-l-4 border-yellow-500 p-6 rounded-lg shadow-md">
+    <div className="border-l-4 border-red-500 p-6 rounded-lg shadow-md">
       {/* Toggle button for small screens */}
       <div className="flex justify-between items-center md:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <h3 className="text-2xl font-semibold text-gray-800">{groupName}</h3>
+        <h3 className="text-2xl font-semibold text-blue-700">{groupName}</h3>
         <button className="text-gray-500">{isOpen ? '-' : '+'}</button>
       </div>
 
       {/* Always show group name on larger screens */}
-      <h3 className="hidden md:block text-2xl font-semibold text-gray-800">{groupName}</h3>
+      <h3 className="hidden md:block text-2xl font-semibold text-blue-700">{groupName}</h3>
 
       {/* Show members only if the group is open on small screens */}
       {isOpen && (
@@ -125,8 +132,7 @@ const TeamGroup = ({ groupName, members }) => {
   );
 };
 
-// Ana bileşen
-const Team = () => {
+const TeamMembers = () => {
   // Takım verileri
   const teamData = {
     coach: {
@@ -137,6 +143,7 @@ const Team = () => {
       contact: 'fatma@example.com',
       social: [
         { platform: 'LinkedIn', url: 'https://linkedin.com/in/ffkaya' },
+        { platform: 'GitHub', url: 'https://github.com/ahmet' },
       ],
     },
     groups: [
@@ -167,7 +174,7 @@ const Team = () => {
           },
         ],
       },
-      
+
       {
         name: 'Mekanik',
         members: [
@@ -179,7 +186,7 @@ const Team = () => {
             contact: 'berk@example.com',
             social: [
               { platform: 'LinkedIn', url: 'https://linkedin.com/in/berk' },
-              { platform: 'Twitter', url: 'https://twitter.com/berk' },
+              { platform: 'GitHub', url: 'https://github.com/ahmet' },
             ],
           },
           {
@@ -319,10 +326,8 @@ const Team = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <h3 className="text-3xl font-semibold text-blue-700 mb-6 border-b-4 border-yellow-500 pb-2">
-        Takım üyeleri
-      </h3>
+    <div id='TeamMembers' className="max-w-5xl mx-auto p-6" style={{ paddingTop: '80px', marginTop: '-80px' }}>
+      <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Takım üyeleri</h2>
       <CoachCard
         name={teamData.coach.name}
         role={teamData.coach.role}
@@ -337,7 +342,8 @@ const Team = () => {
         ))}
       </div>
     </div>
+
   );
 };
 
-export default Team;
+export default TeamMembers;

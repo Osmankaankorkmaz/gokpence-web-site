@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-::selection{
-  background-color: #FBBF24;
-  color: #1D4ED8;
-}
 
 .bio-text {
   max-width: 100ch; /* 30 karakter genişlik */

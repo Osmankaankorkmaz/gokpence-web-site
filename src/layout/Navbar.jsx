@@ -25,6 +25,16 @@ const Navbar = () => {
         };
     }, []);
 
+    // Yumuşak kaydırma fonksiyonu
+    const smoothScroll = (e, targetId) => {
+        e.preventDefault();
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsMobileMenuOpen(false); // Mobil menü kapansın
+    };
+
     return (
         <div>
             <nav className={`${isScrolled ? 'fixed top-0 left-0 w-full shadow-md z-50' : 'block'} p-4 bg-white text-gray-900 transition-all duration-300`}>
@@ -40,8 +50,9 @@ const Navbar = () => {
                         <ul className="flex space-x-8 text-lg">
                             <li>
                                 <a
-                                    href="#"
-                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                                    href="#Home"
+                                    onClick={(e) => smoothScroll(e, 'Home')} // Yumuşak kaydırma ekle
+                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                                     style={{ textUnderlineOffset: '8px' }}
                                 >
                                     Anasayfa
@@ -49,8 +60,19 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <a
-                                    href="#"
-                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                                    href="#Gallery"
+                                    onClick={(e) => smoothScroll(e, 'Gallery')}
+                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
+                                    style={{ textUnderlineOffset: '8px' }}
+                                >
+                                    Galeri
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#ProjectDetails"
+                                    onClick={(e) => smoothScroll(e, 'ProjectDetails')}
+                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                                     style={{ textUnderlineOffset: '8px' }}
                                 >
                                     Proje Detayları
@@ -58,20 +80,12 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <a
-                                    href="#"
-                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                                    href="#TeamMembers"
+                                    onClick={(e) => smoothScroll(e, 'TeamMembers')}
+                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                                     style={{ textUnderlineOffset: '8px' }}
                                 >
                                     Takım
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    className="transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
-                                    style={{ textUnderlineOffset: '8px' }}
-                                >
-                                    Blog
                                 </a>
                             </li>
                         </ul>
@@ -94,39 +108,43 @@ const Navbar = () => {
                         <img
                             src="imagesAndVideos/gokpence-logo.png"
                             alt="Gök Pençe Logosu"
-                            className="h-30 w-20 md:h-30 md:w-30 object-cover" // Set equal height and width for a square shape
+                            className="h-30 w-20 md:h-30 md:w-30 object-cover"
                         />
                     </div>
                 </div>
                 <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} w-full mx-auto py-8 text-center`}>
                     <div className="flex flex-col justify-center items-center w-full">
                         <a
-                            href="#"
-                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                            href="#Home"
+                            onClick={(e) => smoothScroll(e, 'Home')}
+                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                             style={{ textUnderlineOffset: '8px' }}
                         >
                             Ana sayfa
                         </a>
                         <a
-                            href="#"
-                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                            href="#Gallery"
+                            onClick={(e) => smoothScroll(e, 'Gallery')}
+                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
+                            style={{ textUnderlineOffset: '8px' }}
+                        >
+                            Galeri
+                        </a>
+                        <a
+                            href="#ProjectDetails"
+                            onClick={(e) => smoothScroll(e, 'ProjectDetails')}
+                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                             style={{ textUnderlineOffset: '8px' }}
                         >
                             Proje Detayları
                         </a>
                         <a
-                            href="#"
-                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
+                            href="#TeamMembers"
+                            onClick={(e) => smoothScroll(e, 'TeamMembers')}
+                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-red-500"
                             style={{ textUnderlineOffset: '8px' }}
                         >
                             Takım
-                        </a>
-                        <a
-                            href="#"
-                            className="block cursor-pointer py-3 transition duration-300 focus:outline-none text-blue-700 hover:text-yellow-500"
-                            style={{ textUnderlineOffset: '8px' }}
-                        >
-                            Blog
                         </a>
                     </div>
                 </div>

@@ -2,9 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <header className="relative h-screen">
-
-
+        <header id='Home' className="relative h-screen">
             <div className="absolute inset-0 overflow-hidden z-10">
                 <video
                     autoPlay

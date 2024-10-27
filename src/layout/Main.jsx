@@ -10,7 +10,6 @@ const Main = () => {
         <Gallery />
         <ProjectDetails />
         <TeamMembers />
-        svdsvds
       </main>
     </div>
   );
