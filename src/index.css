@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection{
+  background-color: #FBBF24;
+  color: #1D4ED8;
+}
+
+.bio-text {
+  max-width: 100ch; /* 30 karakter genişlik */
+  word-break: break-word; /* Uzun kelimeleri kırarak alt satıra geç */
+}
+
+/* Add this CSS to your styles */
+.scrollbar-hidden {
+  /* Hide scrollbar for WebKit browsers */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  /* Hide scrollbar for Internet Explorer and Edge */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
