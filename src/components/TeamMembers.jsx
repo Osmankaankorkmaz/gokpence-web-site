@@ -1,139 +1,8 @@
-import React, { useState } from 'react';
-
-// Modal bileşeni
-const Modal = ({ isOpen, onClose, name, role, bio, image, contact, social }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg relative">
-        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
-          &times;
-        </button>
-        <img src={image} alt={name} className="w-32 h-32 rounded-full mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-gray-800 text-center">{name}</h2>
-        <p className="text-gray-500 text-center mb-4">{role}</p>
-
-        <div className="h-32 overflow-y-auto mb-4 scrollbar-hidden"> {/* Adjust height as needed */}
-          <p className="text-gray-700 text-justify">{bio}</p>
-        </div>
-
-        <p className="text-gray-500 text-center">{contact}</p>
-        <div className="flex justify-center mt-4">
-          {social.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              className="text-blue-500 mx-2 flex items-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.platform === 'LinkedIn' && <i className="fab fa-linkedin mr-1"></i>}
-              {link.platform === 'GitHub' && <i className="fab fa-github mr-1"></i>} {/* GitHub ikonu */}
-              {link.platform}
-            </a>
-          ))}
-        </div>
-
-      </div>
-    </div>
-  );
-};
-
-
-// Hoca kartı bileşeni
-const CoachCard = ({ name, role, image, bio, contact, social }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  return (
-    <div>
-      <div onClick={() => setModalOpen(true)} className="p-6 rounded-lg shadow-lg flex flex-col items-center text-center mb-8 cursor-pointer transform transition-transform hover:scale-105 border-l-4 border-red-500">
-        <img src={image} alt={name} className="w-32 h-32 rounded-full mb-4" />
-        <h2 className="text-2xl font-bold text-blue-700">{name}</h2>
-        <p className="text-red-500">{role}</p>
-      </div>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        name={name}
-        role={role}
-        bio={bio}
-        image={image}
-        contact={contact}
-        social={social}
-      />
-    </div>
-  );
-};
-
-// Öğrenci kartı bileşeni
-const StudentCard = ({ name, role, image, bio, contact, social }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  return (
-    <div>
-      <div
-        onClick={() => setModalOpen(true)}
-        className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center text-center cursor-pointer transform transition-transform hover:scale-105 "
-      >
-        <img src={image} alt={name} className="w-24 h-24 rounded-full mb-4" />
-        <h4 className="text-xl font-bold text-blue-700">{name}</h4>
-
-        <div className="text-red-500 max-w-xs truncate flex items-center justify-center">
-          <p className="truncate">{role}</p>
-        </div>
-      </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        name={name}
-        role={role}
-        bio={bio}
-        image={image}
-        contact={contact}
-        social={social}
-      />
-    </div>
-  );
-};
-
-// Grup bileşeni
-const TeamGroup = ({ groupName, members }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-l-4 border-red-500 p-6 rounded-lg shadow-md">
-      {/* Toggle button for small screens */}
-      <div className="flex justify-between items-center md:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <h3 className="text-2xl font-semibold text-blue-700">{groupName}</h3>
-        <button className="text-gray-500">{isOpen ? '-' : '+'}</button>
-      </div>
-
-      {/* Always show group name on larger screens */}
-      <h3 className="hidden md:block text-2xl font-semibold text-blue-700">{groupName}</h3>
-
-      {/* Show members only if the group is open on small screens */}
-      {isOpen && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-          {members.map((member, index) => (
-            <StudentCard key={index} {...member} />
-          ))}
-        </div>
-      )}
-
-      {/* Always show members on larger screens */}
-      <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-        {members.map((member, index) => (
-          <StudentCard key={index} {...member} />
-        ))}
-      </div>
-    </div>
-  );
-};
+import React from 'react';
+import CoachCard from './CoachCard';
+import TeamGroup from './TeamGroup';
 
 const TeamMembers = () => {
-  // Takım verileri
   const teamData = {
     coach: {
       name: 'Fatma Feyza KAYA',
@@ -152,24 +21,24 @@ const TeamMembers = () => {
         members: [
           {
             name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
+            role: 'Yazılım Birimi Kaptanı',
+            image: 'imagesAndVideos/team/ademulusoy.png',
+            bio: 'Adem Ulusoy, teknolojiye olan ilgisi ve merakı sayesinde kariyerine yön vermiş bir profesyoneldir. Bilgisayar sistemleri ve yazılımlarıyla ilk tanıştığı günden itibaren bu alandaki becerilerini geliştirmeye odaklanmıştır. MAKÜ - Bilgisayar Teknolojisi ve Programlama bölümünde eğitim alarak teknik bilgi ve yetkinliklerini derinleştirmiştir. IT alanında elde ettiği deneyim, Sistem Yönetimi, Ağ Güvenliği, Yazılım Geliştirme, Veritabanı Oluşturma ve Yönetimi, Bilgisayar Donanımı ve Programları, 3D Tasarım - Modelleme ve Animasyon, IoT Cihazlar ile Robotik ve Otomasyon Projeleri, Sanallaştırma (VirtualBox-VMware), Windows Masaüstü Uygulama Oluşturma gibi alanlarda tecrübe kazanmasını sağlamıştır. Sistem ve ağ altyapılarının kurulumu, yönetimi ve güvenliği Adem’in ilgi alanları arasında yer almaktadır. Bu konularda iş sürekliliği için gereken IT çözümlerini başarıyla geliştirmiştir. Sorunları çözme ve süreçleri iyileştirme konusunda sonuç odaklı bir yaklaşım sergilemekte, karmaşık projeleri yönetirken ekip çalışmasına yatkınlığı sayesinde projeleri zamanında ve başarıyla tamamlamaya odaklanmaktadır. Ayrıca, sürekli değişen IT dünyasında yenilikleri takip eden Adem, sürekli öğrenmeyi bir yaşam tarzı haline getirmiştir. C#, Python, Java gibi programlama dilleri ve SQL veritabanları ile çalışarak iş süreçlerinde otomasyon projeleri geliştirmiştir. Kariyer hedefi, yalnızca teknolojik çözümler üretmekle kalmayıp, aynı zamanda işletmelere stratejik katma değer sağlayan projelerde yer almaktır. İleriye dönük olarak, güvenlik ve bulut teknolojileri konularında daha fazla uzmanlaşmayı, büyük ölçekli IT projelerini yönetmeyi ve teknolojiyle işletmeleri bir adım öteye taşımayı hedeflemektedir.',
             contact: 'ahmet@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ulusy-adm' },
               { platform: 'GitHub', url: 'https://github.com/ahmet' },
             ],
           },
           {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
+            name: 'Osman Kaan KORKMAZ',
+            role: 'Full Stack Developer',
+            image: 'imagesAndVideos/team/osmankaankorkmaz.png',
+            bio: 'Osman Kaan Korkmaz, Bilgisayar Programcılığı alanında 2. sınıf öğrencisi olarak eğitim hayatına devam etmektedir. Eğitim sürecinde, yazılım geliştirme, oyun tasarımı ve veri tabanı yönetimi konularında yetkinlik kazanmayı hedeflemektedir. Teknoloji alanındaki bilgisi ve deneyimi, başta Unity ve Unreal Engine olmak üzere, çeşitli oyun motorlarıyla oyun geliştirme süreçlerinde aktif olarak rol almasına olanak tanımaktadır. Ayrıca, Blender kullanarak 3D modelleme becerilerini geliştirmiştir. Veri tabanı yönetimi alanında MySQL ve MS SQL gibi sistemleri kullanabilme yeterliliğine sahip olan Osman Kaan, yazılım dilleri konusunda ise C#, Python ve JavaScript gibi dillerde projeler geliştirmektedir. Web geliştirme konusunda MERN stack (MongoDB, Express.js, React.js, Node.js) ile birlikte Bootstrap ve Tailwind CSS gibi teknolojileri kullanarak modern ve kullanıcı odaklı web uygulamaları tasarlamaktadır. Grafik tasarım becerilerini geliştirmek amacıyla Canva ve Adobe uygulamalarını etkin bir biçimde kullanmakta; ayrıca Microsoft Office uygulamaları ile raporlama ve sunum hazırlama konularında deneyim kazanmaktadır. Elektronik projeler üzerinde çalışarak Proteus ve Arduino gibi platformları kullanma yeteneğini geliştirmiştir.',
             contact: 'ahmet@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/osman-kaan-korkmaz-91a082220' },
+              { platform: 'GitHub', url: 'https://github.com/Osmankaankorkmaz' },
             ],
           },
         ],
@@ -179,47 +48,25 @@ const TeamMembers = () => {
         name: 'Mekanik',
         members: [
           {
-            name: 'Berk',
-            role: 'Mechanical Engineer',
+            name: 'Berk GÜVEN',
+            role: 'Mekanik Birim Kaptanı',
             image: 'https://via.placeholder.com/400x400',
             bio: 'Mekanik mühendis. Tasarım ve analitik hesaplamalarda uzmandır.',
             contact: 'berk@example.com',
             social: [
               { platform: 'LinkedIn', url: 'https://linkedin.com/in/berk' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'GitHub', url: 'https://github.com/berk' },
             ],
           },
           {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
+            name: 'Can ALTAY',
+            role: 'CAD Specialist',
             image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
+            bio: 'CAD tasarımcısı. Kompleks mekanik parçaların modellemesinde deneyimlidir.',
+            contact: 'can@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/can' },
+              { platform: 'GitHub', url: 'https://github.com/can' },
             ],
           },
         ],
@@ -228,8 +75,8 @@ const TeamMembers = () => {
         name: 'Elektronik',
         members: [
           {
-            name: 'Faruk',
-            role: 'Circuit Designer',
+            name: 'Faruk CAN',
+            role: 'Elektronik Birim Kaptanı',
             image: 'https://via.placeholder.com/400x400',
             bio: 'Devre tasarım uzmanı. Analog ve dijital devrelerde uzmandır.',
             contact: 'faruk@example.com',
@@ -239,36 +86,14 @@ const TeamMembers = () => {
             ],
           },
           {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
+            name: 'Kerem SÖNMEZ',
+            role: 'PCB Designer',
             image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
+            bio: 'PCB tasarım uzmanı. Çok katmanlı devre tasarımlarında deneyimlidir.',
+            contact: 'kerem@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/kerem' },
+              { platform: 'GitHub', url: 'https://github.com/kerem' },
             ],
           },
         ],
@@ -277,56 +102,33 @@ const TeamMembers = () => {
         name: 'Similasyon',
         members: [
           {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
+            name: 'Adem KILINÇ',
+            role: 'Similasyon Birim Kaptanı',
             image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
+            bio: 'Similasyon analiz uzmanı. FEA ve CFD alanlarında deneyimi vardır.',
+            contact: 'adem@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/adem' },
+              { platform: 'GitHub', url: 'https://github.com/adem' },
             ],
           },
           {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
+            name: 'Merve KAYA',
+            role: 'FEA Analyst',
             image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
+            bio: 'Yapısal analizlerde uzman. FEA simülasyonları yürütmektedir.',
+            contact: 'merve@example.com',
             social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
-            ],
-          },
-          {
-            name: 'Adem ULUSOY',
-            role: 'Frontend Developer',
-            image: 'https://via.placeholder.com/400x400',
-            bio: 'Frontend geliştirme uzmanı. React ve Vue.js üzerinde deneyimi var.',
-            contact: 'ahmet@example.com',
-            social: [
-              { platform: 'LinkedIn', url: 'https://linkedin.com/in/ahmet' },
-              { platform: 'GitHub', url: 'https://github.com/ahmet' },
+              { platform: 'LinkedIn', url: 'https://linkedin.com/in/merve' },
+              { platform: 'GitHub', url: 'https://github.com/merve' },
             ],
           },
         ],
       },
-    ],
-  };
-
+    ]
+  }      
   return (
-    <div id='TeamMembers' className="max-w-5xl mx-auto p-6" style={{ paddingTop: '80px', marginTop: '-80px' }}>
+    <div id="TeamMembers" className="max-w-5xl mx-auto p-6" style={{ paddingTop: '80px', marginTop: '-80px' }}>
       <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Takım üyeleri</h2>
       <CoachCard
         name={teamData.coach.name}
@@ -342,7 +144,6 @@ const TeamMembers = () => {
         ))}
       </div>
     </div>
-
   );
 };
 

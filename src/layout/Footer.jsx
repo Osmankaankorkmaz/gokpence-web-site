@@ -2,7 +2,6 @@ import React from 'react';
 
 const Footer = () => {
   
-  // Yumuşak kaydırma fonksiyonu
   const smoothScroll = (e, targetId) => {
     e.preventDefault();
     const target = document.getElementById(targetId);
@@ -14,16 +13,14 @@ const Footer = () => {
   return (
     <footer className="bg-white text-blue-700 py-10 mt-10 border-t-4 border-red-500">
       <div className="max-w-6xl mx-auto px-4 flex flex-col space-y-10">
-
-        {/* Yanyana Divler */}
         <div className="flex flex-col md:flex-row justify-between md:space-x-10">
-          
-          {/* Takım Koçu ve Grup Başkanları */}
+
+          {/* Takım Koçu ve Birim Kaptanları */}
           <div className="flex flex-col space-y-4 w-full md:w-1/2">
-            <h4 className="text-lg font-bold text-center">Takım Koçu ve Grup Başkanları</h4>
+            <h4 className="text-lg font-bold text-center">Takım Koçu ve Birim Kaptanları</h4>
             <div className="text-center">
               <h5 className="font-semibold flex justify-center items-center">
-                Takım Koçu: <span className='text-red-500'>&nbsp;Mehmet Kaya</span>  
+                Takım Koçu: <span className='text-red-500'>&nbsp;Fatma Feyza KAYA</span>  
                 <a href="https://linkedin.com/in/ahmet-yilmaz" className="text-blue-500 ml-2">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
@@ -34,7 +31,7 @@ const Footer = () => {
             </div>
             <div className="text-center">
               <h5 className="font-semibold flex justify-center items-center">
-                Yazılım Grubu Başkanı: <span className='text-red-500'>&nbsp;Mehmet Kaya</span> 
+                Yazılım Birimi Kaptanı: <span className='text-red-500'>&nbsp;Adem ULUSOY</span> 
                 <a href="https://linkedin.com/in/ali-can" className="text-blue-500 ml-2">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
@@ -45,7 +42,7 @@ const Footer = () => {
             </div>
             <div className="text-center">
               <h5 className="font-semibold flex justify-center items-center">
-                Mekanik Grubu Başkanı: <span className='text-red-500'>&nbsp;Mehmet Kaya</span> 
+                Mekanik Birimi Kaptanı: <span className='text-red-500'>&nbsp;Berk GÜVEN</span> 
                 <a href="https://linkedin.com/in/ayse-demir" className="text-blue-500 ml-2">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
@@ -56,7 +53,18 @@ const Footer = () => {
             </div>
             <div className="text-center">
               <h5 className="font-semibold flex justify-center items-center">
-                Elektronik Grubu Başkanı:  <span className='text-red-500'>&nbsp;Mehmet Kaya</span> 
+                Elektronik Birimi Kaptanı:  <span className='text-red-500'>&nbsp;Faruk CAN</span> 
+                <a href="https://linkedin.com/in/mehmet-kaya" className="text-blue-500 ml-2">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/mehmet-kaya" className="text-purple-500 ml-2">
+                  <i className="fab fa-github"></i>
+                </a>
+              </h5>
+            </div>
+            <div className="text-center">
+              <h5 className="font-semibold flex justify-center items-center">
+                Similasyon Birimi Kaptanı:  <span className='text-red-500'>&nbsp;Adem KILINÇ</span> 
                 <a href="https://linkedin.com/in/mehmet-kaya" className="text-blue-500 ml-2">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
@@ -98,7 +106,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Tüm Haklar Saklıdır */}
         <div className="text-center text-gray-600 mt-10">
           <p>Tüm hakları saklıdır &copy; {new Date().getFullYear()}</p>
         </div>

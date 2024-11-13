@@ -15,7 +15,7 @@ const Header = () => {
                 </video>
             </div>
 
-            <div className="absolute inset-0 bg-black opacity-90 z-15">fgdeeeeeeeeeeer</div>
+            <div className="absolute inset-0 bg-black opacity-90 z-15"></div>
 
             <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-white text-center">
                 <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">Gök pençe</h1>

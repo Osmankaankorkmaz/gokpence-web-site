@@ -4,16 +4,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Gallery = () => {
-  // Slider ayarları
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true, 
+    autoplaySpeed: 10000, 
   };
-
-  // Görseller listesi
+  
   const images = [
     { src: "imagesAndVideos/gallery/IHAPhoto1.png", alt: "İHA havada uçarken" },
     { src: "imagesAndVideos/gallery/IHAPhoto2.png", alt: "İHA iniş yaparken" },
@@ -40,7 +40,7 @@ const Gallery = () => {
       <div className="lg:hidden">
         <Slider {...sliderSettings}>
           {images.map((image, index) => (
-            <div key={index} className="overflow-hidden rounded-lg shadow-lg">
+            <div key={index} className="overflow-hidden rounded-lg shadow-lg ">
               <img src={image.src} alt={image.alt} className="object-cover w-full h-64" />
             </div>
           ))}
