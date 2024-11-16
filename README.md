@@ -63,5 +63,5 @@ Bu web uygulaması, insansız hava aracı (İHA) projelerini tanıtmak ve takım
 
 ---
 
-### 📄 Lisans
+### Lisans
 Bu proje MIT lisansı altında sunulmaktadır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
