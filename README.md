@@ -1,71 +1,67 @@
-# Getting Started with Create React App
+#  Gökpençe - İHA Tanıtım ve Takım Portalı
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bu web uygulaması, insansız hava aracı (İHA) projelerini tanıtmak ve takım üyelerinin, süreçlerin ve projeye dair teknik detayların bir portal üzerinden erişilmesini sağlamak amacıyla geliştirilmiştir. Portal, kullanıcı dostu bir tasarım ile ekip üyeleri, proje detayları, teknik özellikler ve galeri gibi bölümleri içermektedir.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Proje Özeti
+#### Teknik Özellikler ve Geliştirme Süreci: Proje detaylarının görsel ve metinsel olarak aktarıldığı bir bölüm.
+  
+#### Ekip Üyeleri: Takım koçu ve ekip gruplarına (yazılım, mekanik, elektronik vb.) dair bilgiler içeren bir sayfa.
 
-### `npm start`
+####  Galeri: Projeye ait görsellerin hem masaüstü hem mobil cihazlarda keyifli bir şekilde görüntülenmesini sağlayan bir slider ve grid galeri.
+  
+#### Modal Yapısı: Tüm kartlarda detayların daha geniş bir şekilde sunulabilmesi için modal bileşeni kullanılmıştır.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Öne Çıkan Özellikler
+#### Duyarlı (Responsive) Tasarım:  Proje, mobil ve masaüstü cihazlarla tamamen uyumludur.
+#### Dinamik ve Modüler Yapı:
+  -- CoachCard: Takım koçu bilgilerini gösterir ve detayı modalda sunar.
+  -- StudentCard ve TeamGroup: Ekip üyelerini ve ekip gruplarını kullanıcıya sunar.
+  -- Gallery: Projeye ait görselleri grid ya da slider halinde gösterir.
+  -- Modal: Detaylı bilgilendirme için kullanılan popup bileşeni.
+#### Kolay Özelleştirme: Ekip üyeleri, sosyal medya bağlantıları, teknik özellikler ve diğer içerikler kolayca güncellenebilir.
+#### Modern UI Kit: Tailwind CSS kullanılarak tasarlanmıştır.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Kullanılan Teknolojiler
+#### React: Bileşen tabanlı kullanıcı arayüzü geliştirme.
+#### React-Slick: Galeri slider bileşeni.
+#### Tailwind CSS: Stil ve tasarım.
+#### FontAwesome: Sosyal medya ikonları ve diğer simgeler.
+#### JavaScript (ES6+): Dinamik işlevsellik.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Kurulum ve Çalıştırma
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Gerekli Araçlar:
+- Node.js (LTS sürümü önerilir)
+- Paket yöneticisi olarak npm ya da yarn
+  
+1. **Depoyu Klonla:**
+   ```bash
+   git clone https://github.com/Osmankaankorkmaz/gokpence-web-site).git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Proje Klasörüne Geç:**
+   ```bash
+   cd ihaportal
 
-### `npm run eject`
+3. **Bağımlılıkları Yükle:**
+   ```bash
+   npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Projeyi Çalıştır:**
+   ```bash
+   npm start
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   Uygulama tarayıcınızda şu adreste çalışacaktır: http://localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# gokpence-web-site
+### 📄 Lisans
+Bu proje MIT lisansı altında sunulmaktadır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
